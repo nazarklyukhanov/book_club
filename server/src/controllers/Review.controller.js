@@ -3,14 +3,14 @@ const formatResponse = require("../utils/formatResponse");
 
 class ReviewController {
   static async getAll(req, res) {
-    const { id } = req.params;
+    const { book_id } = req.params;
 
     if (isNaN(+id)) {
       res.status(400).json(formatResponse(400, "Неверный формат ID"));
       return;
     }
     try {
-      const reviews = await ReviewService.getAll(id);
+      const reviews = await ReviewService.getAll(book_id);
 
       if (!reviews || reviews.length === 0) {
         res.status(200).json(formatResponse(200, "Отзывов нет", []));
