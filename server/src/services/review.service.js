@@ -1,8 +1,8 @@
 const { Review } = require('../db/models');
 
 class ReviewService {
-  static async getAllReview() {
-    return await Review.findAll();
+  static async getAllReview(bookId) {
+    return await Review.findAll({where: {book_id: bookId}});
   }
 
   static async getReviewById(id) {
