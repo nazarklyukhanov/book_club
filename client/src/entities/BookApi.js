@@ -3,34 +3,33 @@ import { axiosInstance } from '../shared/axiosInstance'; //
 
 export default class BookApi {
   static async getAllBooks() {
-    const { data } = await axiosInstance.get('/tasks');
+    const { data } = await axiosInstance.get('/books');
     return data;
   }
-  static async getOneTask(id) {
-    const response = await fetch(`${BASE_URL}/tasks/${id}`);
+  static async getOneBook(id) {
+    const response = await fetch(`${BASE_URL}/books/${id}`);
     const data = await response.json();
     return data;
   }
 
-  static async createTask(taskData) {
-    const { data } = await axiosInstance.post('/tasks', taskData);
-
+  static async createBook(bookData) {
+    const { data } = await axiosInstance.post('/books', bookData);
     return data;
   }
 
-  static async updateTask(taskId, taskData) {
-    const response = await fetch(`${BASE_URL}/tasks/${taskId}`, {
+  static async updateBook(bookId, bookData) {
+    const response = await fetch(`${BASE_URL}/books/${bookId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(taskData),
+      body: JSON.stringify(bookData),
     });
 
     const data = await response.json();
     return data;
   }
 
-  static async deleteTask(id) {
-    const { data } = await axiosInstance.delete(`/tasks/${id}`);
+  static async deleteBook(id) {
+    const { data } = await axiosInstance.delete(`/books/${id}`);
 
     return data;
   }
