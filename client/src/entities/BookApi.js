@@ -1,5 +1,5 @@
 const BASE_URL = 'http://localhost:3000/api';
-import { axiosInstance } from '../shared/axiosInstance'; 
+import { axiosInstance } from '../shared/axiosInstance'; //
 
 export default class BookApi {
   static async getAllBooks() {
