@@ -1,36 +1,36 @@
 const BASE_URL = 'http://localhost:3000/api';
-import { axiosInstance } from '../shared/lib/axiosInstance'; // уточнить путь
+import { axiosInstance } from '../shared/axiosInstance'; 
 
-export default class BookApi {
-  static async getAllBooks() {
-    const { data } = await axiosInstance.get('/tasks');
+export default class ReviewApi {
+  static async getAllRewiew() {
+    const { data } = await axiosInstance.get('/reviews');
     return data;
   }
-  static async getOneTask(id) {
-    const response = await fetch(`${BASE_URL}/tasks/${id}`);
+  static async getOneReview(id) {
+    const response = await fetch(`${BASE_URL}/reviews/${id}`);
     const data = await response.json();
     return data;
   }
 
-  static async createTask(taskData) {
-    const { data } = await axiosInstance.post('/tasks', taskData);
+  static async createReview(reviewData) {
+    const { data } = await axiosInstance.post('/reviews', reviewData);
 
     return data;
   }
 
-  static async updateTask(taskId, taskData) {
-    const response = await fetch(`${BASE_URL}/tasks/${taskId}`, {
+  static async updateReview(reviewId, reviewData) {
+    const response = await fetch(`${BASE_URL}/reviews/${reviewId}`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(taskData),
+      headers: { 'Content-Type': 'application/json' }, 
+      body: JSON.stringify(reviewData),
     });
 
     const data = await response.json();
     return data;
   }
 
-  static async deleteTask(id) {
-    const { data } = await axiosInstance.delete(`/tasks/${id}`);
+  static async deleteReview(id) {
+    const { data } = await axiosInstance.delete(`/reviews/${id}`);
 
     return data;
   }
