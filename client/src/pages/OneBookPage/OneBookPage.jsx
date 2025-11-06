@@ -5,7 +5,7 @@ import BookApi from '../../entities/BookApi';
 
 
 export default function OneBookPage() {
-const [book, setBook] = useState(null)
+const [book, setBook] = useState({})
 const { id } = useParams
 
  

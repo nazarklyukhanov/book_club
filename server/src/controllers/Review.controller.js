@@ -1,11 +1,11 @@
-const ReviewService = require("../services/book.service");
+const ReviewService = require("../services/review.service");
 const formatResponse = require("../utils/formatResponse");
 
 class ReviewController {
   static async getAll(req, res) {
     const { book_id } = req.params;
 
-    if (isNaN(+id)) {
+    if (isNaN(+book_id)) {
       res.status(400).json(formatResponse(400, "Неверный формат ID"));
       return;
     }
@@ -21,7 +21,7 @@ class ReviewController {
         .status(200)
         .json(formatResponse(200, "Отзывы получены", reviews));
     } catch (error) {
-      console.log("====reviewController.getAll====", error);
+      console.log("====ReviewController.getAll====", error);
       res
         .status(500)
         .json(formatResponse(500, "Внутренняя ошибка сервера", null, error));
@@ -73,7 +73,7 @@ class ReviewController {
     }
 
     try {
-      const newBook = await ReviewService.createTask({
+      const newReview = await ReviewService.createReview({
         text_of_review,
         user_id: user.id,
         book_id,
@@ -81,9 +81,9 @@ class ReviewController {
 
       return res
         .status(201)
-        .json(formatResponse(201, "Отзыв добавлен успешно", newBook));
+        .json(formatResponse(201, "Отзыв добавлен успешно", newReview));
     } catch (error) {
-      console.log("====TaskController.createBook====", error);
+      console.log("====RewiewController.createReview====", error);
       res
         .status(500)
         .json(formatResponse(500, "Внутренняя ошибка сервера", null, error));
@@ -143,7 +143,7 @@ class ReviewController {
 
       return res.status(200).json(formatResponse(200, "Отзыв успешно удален"));
     } catch (error) {
-      console.log("====ReviewController.deleteBook====", error);
+      console.log("====ReviewController.deleteReview====", error);
       res
         .status(500)
         .json(formatResponse(500, "Внутренняя ошибка сервера", null, error));

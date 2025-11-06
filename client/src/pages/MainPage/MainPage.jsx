@@ -1,29 +1,27 @@
 import { useEffect, useState } from "react";
 import BookApi from "../../entities/BookApi";
-import "./MainPage.css";
+import styles from "./MainPage.module.css";
 import BookPage from "../BookPage/BookPage";
 import { useNavigate } from "react-router";
+
 
 export default function MainPage({ books }) {
   const navigate = useNavigate();
 
+  function handleClick(id) {
+    navigate(`/books/${id}`);
+  }
+
   return (
-    <div className="simple-page">
-      <h1>Все книги</h1>
-      <div className="simple-grid">
+    <div className={styles.container}>
+      <h1 className={styles.title}>Выбери книгу по душе!</h1>
+      <div className={styles.grid}>
         {books.map((el) => (
-          <div key={el.id} className="book-card">
+          <div key={el.id} className={styles.bookCard}>
             <BookPage book={el} />
-            <button
-              onClick={() => navigate(`/books/${el.id}`)}
-              className="details-button"
-            >
-              Подробнее
-            </button>
           </div>
         ))}
       </div>
     </div>
   );
 }
-

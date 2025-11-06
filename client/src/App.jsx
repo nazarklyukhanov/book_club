@@ -11,6 +11,7 @@ import Layout from "./app/layout/Layout";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import RaitingPage from "./pages/RaitingPage/RaitingPage";
 import BookApi from "./entities/BookApi";
+import MyBooksPage from "./pages/MyBooksPage/MyBooksPage";
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
         <Route path="/addbook" element={<AddNewBookPage user={user} />} />
         <Route path="/books/:id" element={<OneBookPage  />} />
         <Route path="/raiting" element={<RaitingPage />} />
+        {/* <Route path="/mybooks" element={<MyBooksPage user={user}/>} /> */}
         <Route path="/auth" element={<AuthPage setUser={setUser} />} />
       </Route>
     </Routes>

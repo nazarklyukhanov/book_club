@@ -81,7 +81,7 @@ class BookController {
     }
 
     try {
-      const newBook = await BookService.createTask({
+      const newBook = await BookService.createBook({
         name,
         author,
         user_id: user.id,
