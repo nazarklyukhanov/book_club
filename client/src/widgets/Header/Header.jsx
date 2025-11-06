@@ -4,7 +4,8 @@ import "./Header.css";
 import { NavLink, Link } from "react-router";
 import UserApi from "../../entities/UserApi";
 import { setAccessToken } from "../../shared/axiosInstance";
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container } from "react-bootstrap";
+import "./Header.css";
 
 export default function Header({ user, setUser }) {
   async function handleSignOut() {
@@ -19,43 +20,43 @@ export default function Header({ user, setUser }) {
         <Navbar.Brand as={Link} to="/" className="fw-bold">
           📚 BookClub
         </Navbar.Brand>
-        
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        
+
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link 
-              as={NavLink} 
+            <Nav.Link
+              as={NavLink}
               to="/"
-              className={({ isActive }) => isActive ? "active fw-bold" : ""}
+              className={({ isActive }) => (isActive ? "active fw-bold" : "")}
             >
               Главная
             </Nav.Link>
-            <Nav.Link 
-              as={NavLink} 
+            <Nav.Link
+              as={NavLink}
               to="/reviews"
-              className={({ isActive }) => isActive ? "active fw-bold" : ""}
+              className={({ isActive }) => (isActive ? "active fw-bold" : "")}
             >
               Отзывы
             </Nav.Link>
-            <Nav.Link 
-              as={NavLink} 
+            <Nav.Link
+              as={NavLink}
               to="/addbook"
-              className={({ isActive }) => isActive ? "active fw-bold" : ""}
+              className={({ isActive }) => (isActive ? "active fw-bold" : "")}
             >
               Добавить книгу
             </Nav.Link>
           </Nav>
-          
+
           <Nav>
             {user ? (
               <>
                 <Navbar.Text className="me-3">
                   Привет, {user?.username}!
                 </Navbar.Text>
-                <Nav.Link 
-                  as={Link} 
-                  to="/" 
+                <Nav.Link
+                  as={Link}
+                  to="/"
                   onClick={handleSignOut}
                   className="text-danger"
                 >
@@ -63,8 +64,8 @@ export default function Header({ user, setUser }) {
                 </Nav.Link>
               </>
             ) : (
-              <Nav.Link 
-                as={Link} 
+              <Nav.Link
+                as={Link}
                 to="/auth"
                 className="btn btn-primary text-white"
               >
@@ -80,49 +81,6 @@ export default function Header({ user, setUser }) {
 
 
 
-// import './Header.css';
-// import { NavLink, Link } from 'react-router';
-// import UserApi from '../../entities/UserApi';
-// import { setAccessToken } from '../../shared/lib/axiosInstance';
 
-// export default function Header({ user, setUser }) {
-//   async function handleSignOut() {
-//     await UserApi.signOut();
-//     setAccessToken('');
-//     setUser(null);
-//   }
 
-//   return (
-//     <header>
-//       <nav>
-//         <NavLink className="navlink" to="/">
-//           Главная
-//         </NavLink>
-//         <NavLink className="navlink" to="/tasks">
-//           Задачи
-//         </NavLink>
-//         <NavLink className="navlink" to="/counter">
-//           Счётчики
-//         </NavLink>
-//         <NavLink className="navlink" to="/timer">
-//           Таймер
-//         </NavLink>
 
-//         {user ? (
-//           <>
-//             <Link className="navlink" to="/">
-//               {user?.username}
-//             </Link>
-//             <Link className="navlink" to="/auth" onClick={handleSignOut}>
-//               Выход
-//             </Link>
-//           </>
-//         ) : (
-//           <Link className="navlink" to="/auth">
-//             Вход
-//           </Link>
-//         )}
-//       </nav>
-//     </header>
-//   );
-// }
