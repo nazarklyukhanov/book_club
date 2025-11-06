@@ -1,3 +1,6 @@
+import "./Header.css";
+
+
 import { NavLink, Link } from "react-router";
 import UserApi from "../../entities/UserApi";
 import { setAccessToken } from "../../shared/axiosInstance";
@@ -75,3 +78,9 @@ export default function Header({ user, setUser }) {
     </Navbar>
   );
 }
+
+
+
+
+
+
