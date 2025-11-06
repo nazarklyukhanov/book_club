@@ -1,9 +1,27 @@
-// import "./OneBookPage.css";
+
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router'
+import BookApi from '../../entities/BookApi';
 
 
-import React from 'react'
+export default function OneBookPage() {
+const [book, setBook] = useState(null)
+const { id } = useParams
 
-export default function OneBookPage({book}) {
+ 
+
+  useEffect(() => {
+async function fetchOneBook() {
+    const data = await BookApi.getOneBook(id);
+    console.log("+++++++++++++++",data);
+    setBook(data.data);
+  }
+    fetchOneBook();
+    console.log("-------------------",book);
+    
+  }, []);
+
+
   return (
    <div> 
 <p>{book.name}</p>
