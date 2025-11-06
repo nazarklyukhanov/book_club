@@ -1,20 +1,32 @@
-// import "./OneBookPage.css";
-import React, { useEffect } from 'react'
-import { useParams } from 'react-router'
 
-export default function BookPage({book}) {
+import React from 'react';
+import { useNavigate } from 'react-router';
+import styles from "./BookPage.module.css";
 
-// const { id } = useParams
-// const book = books.filter(el => el.id === id)
+export default function BookPage({ book }) {
+  const navigate = useNavigate();
 
+  function handleClick(id) {
+    navigate(`/books/${id}`);
+  }
 
   return (
-   <div> 
-<p>{book.name}</p>
-<p>{book.autor}</p>
-<p>{book.cover}</p>
-<p>{book.comment_of_user}</p>
-<p>{book.user_id}</p>
-</div>
-  )
+    <div className={styles.container}> 
+      <p className={styles.bookName}>{book.name}</p>
+      <p className={styles.author}>{book.autor}</p>
+      <button 
+        className={styles.moreButton} 
+        onClick={() => handleClick(book.id)}
+      >
+        Подробнее
+      </button>
+      <img 
+        className={styles.bookImage} 
+        src={`./public/${book.name}.jpg`} 
+        alt={book.name} 
+      />
+      <p className={styles.comment}>{book.comment_of_user}</p>
+      <p className={styles.userId}>{book.user_id}</p>
+    </div>
+  );
 }
