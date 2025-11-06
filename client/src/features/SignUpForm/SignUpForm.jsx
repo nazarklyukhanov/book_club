@@ -42,7 +42,10 @@ export default function SignUpForm({ setUser }) {
 
   return (
     <div>
-      <form className="form" onSubmit={signUpHandler}>
+      <form className="form" onSubmit={signUpHandler}
+ 
+      
+      >
         <FormInput
           placeholder=" "
           name="username"
