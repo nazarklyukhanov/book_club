@@ -1,3 +1,6 @@
+import "./Header.css";
+
+
 import { NavLink, Link } from "react-router";
 import UserApi from "../../entities/UserApi";
 import { setAccessToken } from "../../shared/axiosInstance";
@@ -74,3 +77,52 @@ export default function Header({ user, setUser }) {
     </Navbar>
   );
 }
+
+
+
+// import './Header.css';
+// import { NavLink, Link } from 'react-router';
+// import UserApi from '../../entities/UserApi';
+// import { setAccessToken } from '../../shared/lib/axiosInstance';
+
+// export default function Header({ user, setUser }) {
+//   async function handleSignOut() {
+//     await UserApi.signOut();
+//     setAccessToken('');
+//     setUser(null);
+//   }
+
+//   return (
+//     <header>
+//       <nav>
+//         <NavLink className="navlink" to="/">
+//           Главная
+//         </NavLink>
+//         <NavLink className="navlink" to="/tasks">
+//           Задачи
+//         </NavLink>
+//         <NavLink className="navlink" to="/counter">
+//           Счётчики
+//         </NavLink>
+//         <NavLink className="navlink" to="/timer">
+//           Таймер
+//         </NavLink>
+
+//         {user ? (
+//           <>
+//             <Link className="navlink" to="/">
+//               {user?.username}
+//             </Link>
+//             <Link className="navlink" to="/auth" onClick={handleSignOut}>
+//               Выход
+//             </Link>
+//           </>
+//         ) : (
+//           <Link className="navlink" to="/auth">
+//             Вход
+//           </Link>
+//         )}
+//       </nav>
+//     </header>
+//   );
+// }
