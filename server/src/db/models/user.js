@@ -7,11 +7,11 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({Book, Review}) {
+    static associate({Book, Review, Raiting}) {
       this.hasMany(Book, {foreignKey: 'user_id'});
       this.hasMany(Review, {foreignKey: 'user_id'});
+      this.hasMany(Raiting, {foreignKey: 'user_id'});
     }
-    static associate(models) {}
 
     static validateEmail(email) {
     const emailPattern = /^[A-z0-9!-_%.]+@[A-z0-9.-]+\.[A-z]{2,}$/;

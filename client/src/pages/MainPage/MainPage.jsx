@@ -2,39 +2,42 @@
 import { useEffect, useState } from 'react';
 import BookApi from '../../entities/BookApi';
 import './MainPage.css';
+import OneBookPage from '../OneBookPage/OneBookPage';
+import { useNavigate } from 'react-router';
 
 export default function MainPage() {
+  const [books, setBooks] = useState([]);
+  const navigate = useNavigate();
 
-  const [books, setBooks] = useState([]);   // [{id,name,autor,cover,comment_of_user}, ...]
   async function fetchBooks() {
-      try {
-        const data = await BookApi.getAllBooks().json();
-        //const list = Array.isArray(data) ? data : data?.books || [];
-        setBooks(data.books);
-        console.log('Получены книги');
-      } catch (err) {
-        console.error('Ошибка загрузки книг:', err);
-      }
-    }
+    const data = await BookApi.getAllBooks();
+    console.log(data);
+    setBooks(data.data);
+  }
+
   useEffect(() => {
-  fetchBooks();
+    fetchBooks();
   }, []);
 
-  // Отрисовка книг
   return (
-<div className="simple-page">
-  <h1>Все книги</h1>
-
-  <div className="simple-grid">
-    {books.map((el) => (
-      <OneBookPage key={el.id} book={el} />
-    ))}
-  </div>
-</div>
-  )
+    <div className="simple-page">
+      <h1>Все книги</h1>
+      <div className="simple-grid">
+        {books.map((el) => (
+          <div key={el.id} className="book-card">
+            <OneBookPage book={el} />
+            <button 
+              onClick={() => navigate(`/books/${el.id}`)}
+              className="details-button"
+            >
+              Подробнее
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
-
-
 
 
 
