@@ -17,10 +17,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false, 
       },
-      rating: {
-        type: Sequelize.INTEGER,
-        allowNull: false, 
-      },
       cover: {
         type: Sequelize.TEXT,
         allowNull: false, 

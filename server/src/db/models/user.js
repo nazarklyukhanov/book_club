@@ -13,6 +13,11 @@ module.exports = (sequelize, DataTypes) => {
     }
     static associate(models) {}
 
+    static validateEmail(email) {
+    const emailPattern = /^[A-z0-9!-_%.]+@[A-z0-9.-]+\.[A-z]{2,}$/;
+    return emailPattern.test(email);
+  }
+
     static validatePassword(password) {
       // валидация пароля
       const hasUpperCase = /[A-Z]/;
@@ -35,12 +40,12 @@ module.exports = (sequelize, DataTypes) => {
 
     static validateSignUpData(data) {
       // валидация введенных данных при регистрации
-      const { userName, email, password } = data;
+      const { username, email, password } = data;
 
       if (
-        !userName ||
-        typeof userName !== "string" ||
-        userName.trim().length === 0
+        !username ||
+        typeof username !== "string" ||
+        username.trim().length === 0
       ) {
         return { isValid: false, error: "Неверное имя пользователя" };
       }
@@ -93,7 +98,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   User.init(
     {
-      name: DataTypes.STRING,
+      username: DataTypes.STRING,
       email: DataTypes.STRING,
       password: DataTypes.STRING,
     },

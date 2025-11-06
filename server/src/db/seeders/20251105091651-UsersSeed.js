@@ -7,7 +7,7 @@ module.exports = {
       "Users",
       [
         {
-          name: "John Doe",
+          username: "John Doe",
           email: "JohnDoe@mail.com",
           password: "8746452534",
         },
@@ -21,7 +21,6 @@ module.exports = {
         {
           name: "Бесы",
           autor: "Федор Достоевский",
-          rating: 5,
           cover: "Besiy.jpg",
           comment_of_user: "Очень захватывающая книга",
           user_id: 1,
