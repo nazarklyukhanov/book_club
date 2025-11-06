@@ -1,14 +1,3 @@
-// import "./AuthPage.css";
-
-// export default function AuthPage() {
-    
-//     return(
-
-//         <h1>Тут формочка Авторизации</h1>
-//     )
-// };
-
-
 
 import './AuthPage.css';
 import SignUpForm from '../../features/SignUpForm/SignUpForm';

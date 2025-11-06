@@ -1,5 +1,3 @@
-import "./Header.css";
-
 
 import { NavLink, Link } from "react-router";
 import UserApi from "../../entities/UserApi";
@@ -8,6 +6,7 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import "./Header.css";
 
 export default function Header({ user, setUser }) {
+  
   async function handleSignOut() {
     await UserApi.signOut();
     setAccessToken("");
@@ -16,19 +15,19 @@ export default function Header({ user, setUser }) {
 
   return (
     <Navbar bg="light" expand="lg" className="shadow-sm">
-      <Container>
-        <Navbar.Brand as={Link} to="/" className="fw-bold">
+      <Container className='Eto_vse_Anton' style={{display: "flex", justifyContent: 'center', alignItems: "center"}}>
+        <Navbar.Brand as={Link} to="/" >
           📚 BookClub
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse id="basic-navbar-nav" style={{display: "flex", justifyContent: 'center', alignItems: "center"}}>
           <Nav className="me-auto">
             <Nav.Link
               as={NavLink}
               to="/"
-              className={({ isActive }) => (isActive ? "active fw-bold" : "")}
+              className={({ isActive }) => (isActive ? "active fw-bol" : "")}
             >
               Главная
             </Nav.Link>

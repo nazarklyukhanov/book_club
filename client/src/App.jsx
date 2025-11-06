@@ -9,6 +9,9 @@ import AddNewBookPage from './pages/AddNewBookPage/AddNewBookPage';
 import OneBookPage from './pages/OneBookPage/OneBookPage';
 import Layout from './app/layout/Layout';
 import AuthPage from './pages/AuthPage/AuthPage';
+import RaitingPage from './pages/RaitingPage/RaitingPage';
+
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -33,6 +36,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/addbook" element={<AddNewBookPage user={user} />} />    
         <Route path="/books/:id" element={<OneBookPage />} />
+        <Route path="/raiting" element={<RaitingPage />} />
         <Route path="/auth" element={<AuthPage setUser={setUser} />} />
       </Route>
     </Routes>

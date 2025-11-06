@@ -1,4 +1,4 @@
-import './FormInput.css';
+// import './FormInput.css';
 
 const FormInput = ({ label, ...otherProps }) => {
   const inputLabelClassName =

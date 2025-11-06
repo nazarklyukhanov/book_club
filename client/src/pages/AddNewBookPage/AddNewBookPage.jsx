@@ -1,4 +1,4 @@
-import "./AddNewBookPage.css";
+// import "./AddNewBookPage.css";
 
 import React from "react";
 import Form from "react-bootstrap/Form";
@@ -11,8 +11,6 @@ export default function AddNewBookPage({ submitHandler }) {
       <Form.Control type="text" placeholder="Название" name="name" />
       <br />
       <Form.Control type="text" placeholder="Автор" name="autor" />
-      <br />
-      <Form.Control type="text" placeholder="Рейтинг" name="raiting" />
       <br />
       <Form.Control type="text" placeholder="Обложка" name="cover" />
       <br />
