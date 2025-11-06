@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-// import './SignUpForm.css';
+import './SignUpForm.css';
 import { UserValidator } from '../../entities/UserValidator';
 import UserApi from '../../entities/UserApi';
 import { setAccessToken } from '../../shared/axiosInstance';
@@ -33,7 +33,7 @@ export default function SignUpForm({ setUser }) {
     if (statusCode === 201) {
       setAccessToken(data.accessToken);
       setUser(data.user);
-      navigate('/tasks');
+      navigate('/');
       setSignUpData(initialValue);
     } else {
       alert(error || 'Ошибка при регистрации');

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-// import './SignInForm.css';
+import './SignInForm.css';
 import { UserValidator } from '../../entities/UserValidator';
 import UserApi from '../../entities/UserApi';
 import { setAccessToken } from '../../shared/axiosInstance';
@@ -33,7 +33,7 @@ export default function SignInForm({ setUser }) {
     if (statusCode === 200) {
       setAccessToken(data.accessToken);
       setUser(data.user);
-      navigate('/tasks');
+      navigate('/');
       setSignInData(initialValue);
     } else {
       alert(error || 'Ошибка при входе в приложение');
