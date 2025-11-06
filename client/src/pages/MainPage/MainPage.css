@@ -1,0 +1,61 @@
+:root{
+  --bg:#0b1020; --muted:#94a3b8; --text:#0f172a;
+  --primary:#6a5af9; --accent:#00d4ff;
+  --glass:rgba(255,255,255,.08); --glass-brd:rgba(255,255,255,.18);
+  --shadow:0 14px 40px rgba(0,0,0,.35);
+}
+.main-page{
+  min-height:100dvh;
+  background:
+    radial-gradient(1200px 600px at 0% -10%, rgba(106,90,249,.22), transparent 60%),
+    radial-gradient(1000px 600px at 100% 0%, rgba(0,212,255,.18), transparent 60%),
+    var(--bg);
+  color:#fff; padding: 26px clamp(12px,3vw,32px);
+}
+
+.hero{text-align:center;margin-bottom:18px;}
+.hero h1{margin:0;font-weight:900;font-size:clamp(26px,5vw,42px);}
+.hero h1 span{background:linear-gradient(90deg,var(--primary),var(--accent));
+  -webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero p{margin-top:8px;color:var(--muted);}
+
+.loader,.error{text-align:center;margin:40px 0;}
+.error{color:#ff7a7a}
+
+/* ==== КАРУСЕЛЬ ==== */
+.carousel-wrap{margin:10px 0 24px;}
+.books-swiper{padding: 6px 6px 20px;}
+.swiper-button-prev,.swiper-button-next{
+  color:#fff; filter: drop-shadow(0 6px 14px rgba(0,0,0,.45));
+}
+.swiper-button-prev::after,.swiper-button-next::after{font-size:24px;}
+
+.glass{background:var(--glass);border:1px solid var(--glass-brd);
+  backdrop-filter: blur(10px);-webkit-backdrop-filter: blur(10px);
+  border-radius:16px; box-shadow: var(--shadow);}
+
+.book-card{overflow:hidden;display:flex;flex-direction:column;height:100%}
+.book-cover{height:260px;background-size:cover;background-position:center;}
+.book-info{padding:12px 14px 16px;}
+.book-title{margin:0 0 4px;font-size:18px;font-weight:900;line-height:1.2;}
+.book-autor{margin:0 0 8px;color:#d1d5db;}
+.meta-row{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.stars{color:#ffd166;font-weight:900;text-shadow:0 0 12px rgba(255,209,102,.28)}
+.stars.muted{color:#a1a1aa;text-shadow:none}
+.stars-val{margin-left:6px;font-weight:800}
+.reviews{color:#e5e7eb;opacity:.9}
+.book-comment{margin:6px 0 0;color:#e5e7eb;font-style:italic;line-height:1.45;
+  max-height:3.2em;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+
+/* ==== СЕТКА ==== */
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.grid-card{overflow:hidden;display:flex;flex-direction:column}
+.grid-cover{height:210px;background-size:cover;background-position:center}
+.grid-info{padding:12px 14px 16px}
+.grid-autor{display:inline-block;padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.4);
+  background:rgba(255,255,255,.12);margin-bottom:6px;font-weight:700;font-size:12px}
+.grid-title{margin:2px 0 6px;font-size:16px;font-weight:900}
+.grid-meta{display:flex;align-items:center;justify-content:space-between}
+.grid-comment{margin:6px 0 0;color:#e5e7eb;font-style:italic;line-height:1.35;
+  max-height:3.2em;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  
