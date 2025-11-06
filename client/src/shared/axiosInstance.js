@@ -6,6 +6,8 @@ export const axiosInstance = axios.create({
   withCredentials: true,
 });
 
+console.log(import.meta.env.VITE_API_URL);
+
 let accessToken = '';
 
 export function setAccessToken(newAccessToken) {
