@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { PlusCircle } from "react-bootstrap-icons";
 import BookApi from "../../entities/BookApi";
-// import { useNavigate } from "react-router";
+import { useState } from "react";
+// import {useNavigate} from 'react-router'
 
 export default function AddNewBookPage() {
   // const navigate = useNavigate();
+
+  const submitHandler = async function (event) {
+    event.preventDefault();
+    const respons = await BookApi.createBook(book);
+  };
+
   const [book, setBook] = useState({
     name: "",
     author: "",
@@ -14,25 +21,30 @@ export default function AddNewBookPage() {
     comment_of_user: "",
   });
 
-  const handleInputChange = (e) => {
-    setBook({ ...book, [e.target.name]: e.target.value });
+  const handleInputChange = (el) => {
+    // обрабатываем изменения ввода
+    const { name, value } = el.target;
+    setBook((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
-
-  const submitHandler = async (event) => {
-    event.preventDefault();
-    const response = await BookApi.createBook(book);
-    console.log(response);
-    // navigate("/");
-  };
+  //     setBook({
+  //   // очищаем поля
+  //   name: "",
+  //   autor: "",
+  //   cover: "",
+  //   comment_of_user: "",
+  // });
 
   return (
     <div
       style={{
-        backgroundColor: "#8B4513",
+        backgroundColor: "#f8f9fa",
         minHeight: "100vh",
         padding: "20px",
         background:
-          "linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%)",
+          "linear-gradient(135deg, #f8f9fa 0%, #f8f9fa 50%, #f8f9fa 100%)",
       }}
     >
       <Form
@@ -79,6 +91,7 @@ export default function AddNewBookPage() {
             backgroundColor: "#FFF8E1",
           }}
         />
+
         <br />
         <Form.Control
           type="text"
