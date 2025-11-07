@@ -9,7 +9,7 @@ import AddNewBookPage from "./pages/AddNewBookPage/AddNewBookPage";
 import OneBookPage from "./pages/OneBookPage/OneBookPage";
 import Layout from "./app/layout/Layout";
 import AuthPage from "./pages/AuthPage/AuthPage";
-import RaitingPage from "./pages/RaitingPage/RaitingPage";
+import RaitingPage from "./components/Raiting/Raiting";
 import BookApi from "./entities/BookApi";
 import MyBooksPage from "./pages/MyBooksPage/MyBooksPage";
 
@@ -46,7 +46,7 @@ function App() {
         <Route path="/addbook" element={<AddNewBookPage user={user} />} />
         <Route path="/books/:id" element={<OneBookPage  />} />
         <Route path="/raiting" element={<RaitingPage />} />
-        {/* <Route path="/mybooks" element={<MyBooksPage user={user}/>} /> */}
+        <Route path="/mybooks" element={<MyBooksPage user={user}/>} />
         <Route path="/auth" element={<AuthPage setUser={setUser} />} />
       </Route>
     </Routes>

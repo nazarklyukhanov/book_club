@@ -39,6 +39,10 @@ class BookService {
 
     return await bookToDelete.destroy();
   }
+
+  static async getMyBook(id) {
+    return await Book.findAll({ where: {user_id: id} });
+   }
 }
 
 module.exports = BookService;
