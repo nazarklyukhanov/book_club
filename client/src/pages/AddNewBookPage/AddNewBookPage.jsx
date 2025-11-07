@@ -17,35 +17,29 @@ export default function AddNewBookPage() {
     
   }
 
-  const [book, setBook] = useState({
-    name: "",
-    author: "",
-    cover: "",
-    comment_of_user: "",
-  });
 
-  const handleInputChange = (el) => {
-    // обрабатываем изменения ввода
-    const { name, value } = el.target;
-    setBook((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+  
+  return (
+    <div
+      style={{
+        backgroundColor: "#8B4513", 
+        minHeight: "100vh",
+        padding: "20px",
+        background:
+          "linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%)",
+      }}
+    >
+      <Form
+        onSubmit={submitHandler}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "15px",
+          maxWidth: "500px",
+          margin: "20px auto",
+          padding: "30px",
 
-   
-  }
-    //     setBook({
-    //   // очищаем поля
-    //   name: "",
-    //   autor: "",
-    //   cover: "",
-    //   comment_of_user: "",
-    // });   
-
-    
-
-    return (
-   
 
       
 

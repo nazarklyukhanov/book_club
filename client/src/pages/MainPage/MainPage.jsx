@@ -16,11 +16,6 @@ export default function MainPage() {
     getBooks();
   }, []);
 
-  const navigate = useNavigate();
-
-  function handleClick(id) {
-    navigate(`/books/${id}`);
-  }
 
   return (
     <div className={styles.container}>

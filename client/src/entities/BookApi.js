@@ -12,6 +12,12 @@ export default class BookApi {
     return data;
   }
 
+   static async getMyBooks(id) {
+    const response = await fetch(`${BASE_URL}/books/mybooks/${id}`);
+    const data = await response.json();
+    return data;
+  }
+
   static async createBook(bookData) {
     const { data } = await axiosInstance.post('/books', bookData);
     return data;
