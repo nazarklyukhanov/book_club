@@ -5,8 +5,6 @@ import Raiting from "../../components/Raiting/Raiting";
 import styles from "./OneBookPage.module.css";
 import Reviews from "../Reviews";
 
-
-
 export default function OneBookPage() {
   const [book, setBook] = useState({});
 
@@ -21,16 +19,18 @@ export default function OneBookPage() {
   }, []);
 
   return (
-    <div>
-      <p>{book.name}</p>
-      <p>{book.autor}</p>
-      <p>{book.cover}</p>
-      <p>{book.comment_of_user}</p>
-      <p>{book.user_id}</p>
-
+    <div className={styles.container}>
+      <p className={styles.bookName}>{book.name}</p>
+      <p className={styles.author}>{book.autor}</p>
+      <img
+        className={styles.bookImage}
+        src={`/public/${book.name}.jpg`}
+        alt={book.name}
+      />
+      <p className={styles.comment}>{book.comment_of_user}</p>
+      <p className={styles.userId}>{book.user_id}</p>
       <Raiting />
       <Reviews />
     </div>
-   
   );
 }
