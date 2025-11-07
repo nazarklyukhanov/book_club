@@ -3,6 +3,9 @@ import { useParams } from "react-router";
 import BookApi from "../../entities/BookApi";
 import Raiting from "../../components/Raiting/Raiting";
 import styles from "./OneBookPage.module.css";
+import Reviews from "../Reviews";
+
+
 
 export default function OneBookPage() {
   const [book, setBook] = useState({});
@@ -24,7 +27,10 @@ export default function OneBookPage() {
       <p>{book.cover}</p>
       <p>{book.comment_of_user}</p>
       <p>{book.user_id}</p>
-      <Review />
+
+      <Raiting />
+      <Reviews />
     </div>
+   
   );
 }

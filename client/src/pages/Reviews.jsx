@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import ReviewApi from "../../entities/ReviewApi";
+import ReviewApi from "../entities/Review";
 
 export default function Reviews() {
   const { id } = useParams(); // id книги из URL
