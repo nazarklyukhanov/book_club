@@ -160,6 +160,17 @@ class BookController {
         .json(formatResponse(500, "Внутренняя ошибка сервера", null, error));
     }
   }
+
+  static async getMyBook(req, res) {
+    const { id } = req.params
+    try {
+    const myBook = await BookService.getMyBook(id)
+    if(!myBook) return res.status(400).json(formatResponse (400, 'Вы не добавляли книг' ));
+    return res.status(200).json(formatResponse(200, "Книги получены", myBook));
+    } catch (error) {
+      console.log("====BookController.getMyBook====", error);
+    }
+  }
 }
 
 module.exports = BookController;

@@ -4,23 +4,18 @@ import Col from "react-bootstrap/Col";
 import { Link } from "react-router";
 import * as Icon from "react-bootstrap-icons";
 import Row from "react-bootstrap/esm/Row";
+import BookApi from '../../entities/BookApi';
 
 export default function MyBooksPage( {user} ) {
   const [book, setBook] = useState([])
-// console.log(user.data.id);
+  
+  
+async function getMyBooks(id) {
+  const myBooks = await BookApi.getMyBooks(id)
+  setBook(myBooks)
+}
 
-async function getMyBooks() {
-    try {
-      const response = await fetch(import.meta.env.VITE_API_URL + `/books/mybooks/${user?.data?.id}`);
-      const data = await response.json();
-      
-      if (response.status === 200) setBook(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-useEffect( () => {getMyBooks()} , [] )
+useEffect( () => {getMyBooks(user.id)} , [] )
 
   return (
     <>

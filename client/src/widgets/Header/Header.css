@@ -70,7 +70,7 @@
 }
 
 /* Градиентный текст “BookClub” */
-.navbar-brand::after {
+/* .navbar-brand::after {
   content: 'BookClub';
   margin-left: .35rem;
   background: linear-gradient(90deg, var(--bc-primary), var(--bc-accent), var(--bc-hot));
@@ -78,7 +78,7 @@
   background-clip: text;
   color: transparent;
   font-weight: 800;
-}
+} */
 
 /* Сияние-черта под брендом на ховер */
 .navbar-brand::before {
