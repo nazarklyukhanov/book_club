@@ -12,7 +12,7 @@ import AuthPage from "./pages/AuthPage/AuthPage";
 import RaitingPage from "./pages/RaitingPage/RaitingPage";
 import BookApi from "./entities/BookApi";
 import MyBooksPage from "./pages/MyBooksPage/MyBooksPage";
-
+import AIChat from './components/AIChat'; //  добавил
 
 function App() {
   const [user, setUser] = useState(null);
@@ -40,6 +40,7 @@ function App() {
   }, []);
 
   return (
+  <div>
     <Routes>
       <Route path="/" element={<Layout user={user} setUser={setUser} />}>
         <Route path="/" element={<MainPage books={books} />} />
@@ -50,6 +51,9 @@ function App() {
         <Route path="/auth" element={<AuthPage setUser={setUser} />} />
       </Route>
     </Routes>
+
+      <AIChat />
+</div>
   );
 }
 
