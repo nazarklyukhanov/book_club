@@ -4,7 +4,7 @@ const formatResponse = require("../utils/formatResponse");
 class BookController {
   static async getAll(req, res) {
     try {
-      const books = await BookService.getAll();
+      const books = await BookService.getAllBooks();
 
       if (!books || books.length === 0) {
         res.status(200).json(formatResponse(200, "Книг нет", []));
@@ -81,7 +81,7 @@ class BookController {
     }
 
     try {
-      const newBook = await BookService.createTask({
+      const newBook = await BookService.createBook({
         name,
         author,
         user_id: user.id,

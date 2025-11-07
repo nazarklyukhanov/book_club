@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const UserService = require('../services/User.service');
+const UserService = require('../services/user.service');
 const formatResponse = require('../utils/formatResponse');
 const generateTokens = require('../utils/generateTokens');
 const { User } = require('../db/models');

@@ -17,7 +17,11 @@ export default function Header({ user, setUser }) {
     <Navbar bg="light" expand="lg" className="shadow-sm">
       <Container className='Eto_vse_Anton' style={{display: "flex", justifyContent: 'center', alignItems: "center"}}>
         <Navbar.Brand as={Link} to="/" >
-          📚 BookClub
+       <img 
+               className={Image} 
+               src={`/public/logo.jpg`} 
+ 
+             />  {"BookClub"}
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
