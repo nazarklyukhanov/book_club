@@ -15,6 +15,8 @@ export default class BookApi {
    static async getMyBooks(id) {
     const response = await fetch(`${BASE_URL}/books/mybooks/${id}`);
     const data = await response.json();
+    console.log(data);
+    
     return data;
   }
 

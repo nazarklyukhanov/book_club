@@ -10,12 +10,12 @@ export default function MyBooksPage( {user} ) {
   const [book, setBook] = useState([])
   
   
-async function getMyBooks(id) {
+async function getMyBookss(id) {
   const myBooks = await BookApi.getMyBooks(id)
-  setBook(myBooks)
+  setBook(myBooks.data)
 }
 
-useEffect( () => {getMyBooks(user.id)} , [] )
+useEffect( () => {getMyBookss()} , [] )
 
   return (
     <>

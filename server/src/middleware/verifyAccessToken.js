@@ -6,7 +6,7 @@ function verifyAccessToken(req, res, next) {
   try {
     const accessToken = req.headers.authorization.split(" ")[1];
 
-    const { user } = jwt.verify(accessToken, process.env.SECRET_ACCESS_TOKEN);
+    const { user } = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
 
     if (!user) {
       return res

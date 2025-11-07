@@ -12,7 +12,7 @@ import AuthPage from "./pages/AuthPage/AuthPage";
 import RaitingPage from "./components/Raiting/Raiting";
 import BookApi from "./entities/BookApi";
 import MyBooksPage from "./pages/MyBooksPage/MyBooksPage";
-import AIChat from './components/AIChat'; //  добавил
+import AIChat from './components/AIChat'; 
 
 function App() {
   const [user, setUser] = useState(null);

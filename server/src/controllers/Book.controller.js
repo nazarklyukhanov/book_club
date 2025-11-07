@@ -50,7 +50,7 @@ class BookController {
   }
 
   static async createBook(req, res) {
-    const { name, author, rating, cover, comment_of_user } = req.body;
+    const { name, author, cover, comment_of_user } = req.body;
 
     const { user } = res.locals;
     console.log(user);
@@ -83,9 +83,8 @@ class BookController {
     try {
       const newBook = await BookService.createBook({
         name,
-        author,
+        autor: author,
         user_id: user.id,
-        rating,
         cover,
         comment_of_user
       });
@@ -167,6 +166,7 @@ class BookController {
     const myBook = await BookService.getMyBook(id)
     if(!myBook) return res.status(400).json(formatResponse (400, 'Вы не добавляли книг' ));
     return res.status(200).json(formatResponse(200, "Книги получены", myBook));
+    
     } catch (error) {
       console.log("====BookController.getMyBook====", error);
     }
