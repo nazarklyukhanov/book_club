@@ -6,11 +6,8 @@ import { useNavigate } from "react-router";
 
 
 export default function MainPage({ books }) {
-  const navigate = useNavigate();
-
-  function handleClick(id) {
-    navigate(`/books/${id}`);
-  }
+ 
+  
 
   return (
     <div className={styles.container}>

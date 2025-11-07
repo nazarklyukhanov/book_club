@@ -2,22 +2,22 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import BookApi from '../../entities/BookApi';
+import Raiting from '../../components/Raiting/Raiting';
+import styles from "./OneBookPage.module.css";
 
 
 export default function OneBookPage() {
-const [book, setBook] = useState({})
-const { id } = useParams
 
- 
+const [book, setBook] = useState({})
+
+const { id } = useParams()
 
   useEffect(() => {
 async function fetchOneBook() {
     const data = await BookApi.getOneBook(id);
-    console.log("+++++++++++++++",data);
     setBook(data.data);
   }
     fetchOneBook();
-    console.log("-------------------",book);
     
   }, []);
 
@@ -30,6 +30,5 @@ async function fetchOneBook() {
 <p>{book.comment_of_user}</p>
 <p>{book.user_id}</p>
 </div>
-
   )
 }

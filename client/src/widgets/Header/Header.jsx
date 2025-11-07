@@ -37,17 +37,17 @@ export default function Header({ user, setUser }) {
             </Nav.Link>
             <Nav.Link
               as={NavLink}
-              to="/reviews"
-              className={({ isActive }) => (isActive ? "active fw-bold" : "")}
-            >
-              Отзывы
-            </Nav.Link>
-            <Nav.Link
-              as={NavLink}
               to="/addbook"
               className={({ isActive }) => (isActive ? "active fw-bold" : "")}
             >
               Добавить книгу
+            </Nav.Link>
+            <Nav.Link
+              as={NavLink}
+              to="/mybooks"
+              className={({ isActive }) => (isActive ? "active fw-bold" : "")}
+            >
+              Мои книги
             </Nav.Link>
           </Nav>
 
