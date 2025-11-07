@@ -23,14 +23,12 @@ async function fetchOneBook() {
 
 
   return (
-    <div className={styles.container}> 
-        <p className={styles.bookName}>{book.name}</p>
-        <img 
-          className={styles.bookImage} 
-          src={`/public/${book.name}.jpg`} 
-          alt={book.name} 
-        />
-        <Raiting/>
-      </div>
+   <div> 
+<p>{book.name}</p>
+<p>{book.autor}</p>
+<p>{book.cover}</p>
+<p>{book.comment_of_user}</p>
+<p>{book.user_id}</p>
+</div>
   )
 }
