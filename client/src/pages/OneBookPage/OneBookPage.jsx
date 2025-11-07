@@ -28,7 +28,8 @@ async function fetchOneBook() {
 <p>{book.autor}</p>
 <p>{book.cover}</p>
 <p>{book.comment_of_user}</p>
-<p>{book.user_id}</p>
+      <p>{book.user_id}</p>
+      <Review />
 </div>
   )
 }
