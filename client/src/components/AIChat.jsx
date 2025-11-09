@@ -14,6 +14,8 @@ export default function AIChat() {
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
+ 
+
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -43,6 +45,8 @@ export default function AIChat() {
       });
 
       const data = await response.json();
+      console.log('ДАТА', data.data.response);
+      
 
       if (data.status === 200) {
         setMessages(prev => [...prev, {

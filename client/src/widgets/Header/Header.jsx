@@ -18,7 +18,7 @@ export default function Header({ user, setUser }) {
       <Container className='Eto_vse_Anton' style={{display: "flex", justifyContent: 'center', alignItems: "center"}}>
         <Navbar.Brand as={Link} to="/" >
        <img 
-               className={Image} 
+              //  className={Image} 
                src={`/public/logo.jpg`} 
  
              />  {"BookClub"}
