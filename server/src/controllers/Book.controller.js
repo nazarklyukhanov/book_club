@@ -4,7 +4,7 @@ const formatResponse = require("../utils/formatResponse");
 class BookController {
   static async getAll(req, res) {
     try {
-      const books = await BookService.getAll();
+      const books = await BookService.getAllBooks();
 
       if (!books || books.length === 0) {
         res.status(200).json(formatResponse(200, "Книг нет", []));
@@ -81,7 +81,7 @@ class BookController {
     }
 
     try {
-      const newBook = await BookService.createTask({
+      const newBook = await BookService.createBook({
         name,
         author,
         user_id: user.id,
@@ -158,6 +158,17 @@ class BookController {
       res
         .status(500)
         .json(formatResponse(500, "Внутренняя ошибка сервера", null, error));
+    }
+  }
+
+  static async getMyBook(req, res) {
+    const { id } = req.params
+    try {
+    const myBook = await BookService.getMyBook(id)
+    if(!myBook) return res.status(400).json(formatResponse (400, 'Вы не добавляли книг' ));
+    return res.status(200).json(formatResponse(200, "Книги получены", myBook));
+    } catch (error) {
+      console.log("====BookController.getMyBook====", error);
     }
   }
 }

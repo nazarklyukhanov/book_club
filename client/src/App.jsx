@@ -1,35 +1,63 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router";
+// import './App.css';
+
+import UserApi from "./entities/UserApi";
+import { setAccessToken } from "./shared/axiosInstance";
+import MainPage from "./pages/MainPage/MainPage";
+import AddNewBookPage from "./pages/AddNewBookPage/AddNewBookPage";
+import OneBookPage from "./pages/OneBookPage/OneBookPage";
+import Layout from "./app/layout/Layout";
+import AuthPage from "./pages/AuthPage/AuthPage";
+import RaitingPage from "./components/Raiting/Raiting";
+import BookApi from "./entities/BookApi";
+import MyBooksPage from "./pages/MyBooksPage/MyBooksPage";
+import AIChat from './components/AIChat'; //  добавил
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [user, setUser] = useState(null);
+  const [books, setBooks] = useState([]);
+
+  async function fetchUser() {
+    try {
+      const { data } = await UserApi.refreshTokens();
+      setAccessToken(data.accessToken);
+      setUser(data.user);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function fetchBooks() {
+    const data = await BookApi.getAllBooks();
+    console.log(data);
+    setBooks(data.data);
+  }
+
+  useEffect(() => {
+    fetchUser();
+    fetchBooks();
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  <div>
+    <Routes>
+      <Route path="/" element={<Layout user={user} setUser={setUser} />}>
+        <Route path="/" element={<MainPage books={books} />} />
+        <Route path="/addbook" element={<AddNewBookPage user={user} />} />
+        <Route path="/books/:id" element={<OneBookPage  />} />
+        <Route path="/raiting" element={<RaitingPage />} />
+        <Route path="/mybooks" element={<MyBooksPage user={user}/>} />
+        <Route path="/auth" element={<AuthPage setUser={setUser} />} />
+      </Route>
+    </Routes>
+
+      <AIChat />
+</div>
+  );
 }
 
-export default App
+export default App;
+
+
+
