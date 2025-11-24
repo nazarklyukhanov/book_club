@@ -1,0 +1,262 @@
+/* ===========================
+   BookClub Header — WOW Style
+   =========================== */
+
+/* Цветовые переменные */
+:root {
+  --bc-bg: rgba(255, 255, 255, 0.6);
+  --bc-border: rgba(255, 255, 255, 0.35);
+  --bc-text: #0f172a;
+  --bc-muted: #64748b;
+
+  --bc-primary: #6a5af9;    /* фиолетовый акцент */
+  --bc-accent:  #00d4ff;    /* неоновый бирюзовый */
+  --bc-hot:     #ff7a7a;    /* тёплый коралл */
+  --bc-shadow:  rgba(17, 12, 46, 0.15);
+}
+
+/* Автоподстройка под тёмную тему */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bc-bg: rgba(15, 23, 42, 0.55);
+    --bc-border: rgba(255, 255, 255, 0.09);
+    --bc-text: #e5e7eb;
+    --bc-muted: #94a3b8;
+    --bc-shadow: rgba(0, 0, 0, 0.35);
+  }
+}
+
+/* Глобально чутка сглаживаем */
+.navbar * {
+  -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
+}
+
+/* ----- NAVBAR (glass) ----- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(135deg, var(--bc-bg), transparent) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--bc-border);
+  box-shadow: 0 8px 30px var(--bc-shadow);
+  transition: background 300ms ease, box-shadow 300ms ease, transform 300ms ease;
+}
+
+/* Мини-подпрыгивание при появлении */
+@keyframes bcFloat {
+  from { transform: translateY(-14px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+.navbar { animation: bcFloat 420ms cubic-bezier(.2,.7,.2,1); }
+
+/* Усиливаем тень при скролле (опционально добавь класс .scrolled из JS при window.scrollY>8) */
+.navbar.scrolled {
+  box-shadow: 0 12px 40px var(--bc-shadow);
+}
+
+/* ----- БРЕНД ----- */
+.navbar-brand {
+  font-weight: 800 !important;
+  letter-spacing: .3px;
+  font-size: clamp(18px, 2.2vw, 22px);
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  color: var(--bc-text) !important;
+  position: relative;
+}
+
+/* Градиентный текст “BookClub” */
+/* .navbar-brand::after {
+  content: 'BookClub';
+  margin-left: .35rem;
+  background: linear-gradient(90deg, var(--bc-primary), var(--bc-accent), var(--bc-hot));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+} */
+
+/* Сияние-черта под брендом на ховер */
+.navbar-brand::before {
+  content: '';
+  position: absolute;
+  left: 0.35rem;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--bc-primary), var(--bc-accent));
+  transition: width 380ms ease;
+}
+.navbar-brand:hover::before { width: 92%; }
+
+/* Маленькая иконка перед брендом (заменим 📚 на более аккуратный стиль) */
+.navbar-brand > span.emoji {
+  filter: drop-shadow(0 2px 6px var(--bc-shadow));
+}
+
+/* ----- ССЫЛКИ МЕНЮ ----- */
+.navbar .nav-link {
+  position: relative;
+  color: var(--bc-muted) !important;
+  font-weight: 600;
+  letter-spacing: .2px;
+  padding: .6rem .8rem !important;
+  border-radius: 10px;
+  transition: color 220ms ease, transform 220ms ease, background 220ms ease;
+}
+
+/* Подсветка при наведении */
+.navbar .nav-link:hover {
+  color: var(--bc-text) !important;
+  background: rgba(100, 116, 139, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Активная ссылка — неоновая линия снизу + насыщенный цвет */
+.navbar .nav-link.active {
+  color: var(--bc-text) !important;
+  background: transparent;
+}
+.navbar .nav-link.active::after,
+.navbar .nav-link:hover::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 6px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--bc-primary), var(--bc-accent));
+  box-shadow: 0 0 14px rgba(0, 212, 255, .35);
+}
+
+/* ----- ПРИВЕТСТВИЕ ----- */
+.navbar-text {
+  color: var(--bc-muted) !important;
+  font-weight: 600;
+  margin-right: .25rem !important;
+  background: linear-gradient(135deg, rgba(106,90,249,.12), rgba(0,212,255,.10));
+  padding: .4rem .75rem;
+  border: 1px solid var(--bc-border);
+  border-radius: 12px;
+}
+
+/* ----- КНОПКИ ----- */
+.navbar .btn,
+.navbar .nav-link.btn {
+  font-weight: 700;
+  border-radius: 12px;
+  padding: .55rem 1rem !important;
+  border: 0;
+  box-shadow: 0 6px 18px rgba(106, 90, 249, 0.25);
+  transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+  background-image: linear-gradient(135deg, var(--bc-primary), var(--bc-accent));
+}
+
+.navbar .btn:hover,
+.navbar .nav-link.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(106, 90, 249, 0.35);
+  filter: saturate(1.05);
+}
+
+/* Красная “Выход” c мягким неоном */
+.navbar .text-danger {
+  --glow: rgba(255, 122, 122, 0.45);
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #ff6b6b, #ff9aa2);
+  box-shadow: 0 6px 18px var(--glow);
+}
+.navbar .text-danger:hover { box-shadow: 0 10px 26px var(--glow); }
+
+/* ----- TOGGLER (бургер) ----- */
+.navbar-toggler {
+  border: 0 !important;
+  padding: .4rem .5rem !important;
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  box-shadow: 0 4px 14px var(--bc-shadow);
+}
+.navbar-toggler:focus { box-shadow: 0 0 0 3px rgba(0,212,255,.35) !important; }
+
+/* Анимация бургер-иконки (иконка bootstrap внутри .navbar-toggler-icon) */
+.navbar-toggler-icon {
+  background-image:
+    linear-gradient(var(--bc-text), var(--bc-text)),
+    linear-gradient(var(--bc-text), var(--bc-text)),
+    linear-gradient(var(--bc-text), var(--bc-text)) !important;
+  background-repeat: no-repeat;
+  background-size: 22px 2px, 22px 2px, 22px 2px;
+  background-position: center calc(50% - 6px),
+                       center,
+                       center calc(50% + 6px);
+  transition: transform 250ms ease, filter 250ms ease;
+}
+.navbar-toggler:hover .navbar-toggler-icon { filter: brightness(1.2); }
+
+/* ----- КОНТЕЙНЕР ШИРИНА И ОТСТУПЫ ----- */
+.navbar .container,
+.navbar .container-fluid {
+  padding-top: .35rem;
+  padding-bottom: .35rem;
+}
+
+/* Чуть расширяем кликабельность пунктов */
+.navbar .me-auto .nav-link { margin-right: .15rem; }
+@media (min-width: 992px) {
+  .navbar .me-auto .nav-link { margin-right: .25rem; }
+}
+
+/* ----- Лёгкая “блик”-анимация бренда при загрузке ----- */
+@keyframes bcShine {
+  0% { background-position: -120%; }
+  100% { background-position: 220%; }
+}
+.navbar-brand::after {
+  background-size: 200% auto;
+  animation: bcShine 2.4s cubic-bezier(.25,.8,.25,1) 300ms both;
+}
+
+/* ----- Фокусные кольца для доступности ----- */
+.navbar a:focus-visible,
+.navbar button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0,212,255,.35), 0 0 0 6px rgba(106,90,249,.25);
+  border-radius: 12px;
+}
+
+/* ----- Мелкие декоративные искры вокруг активного пункта (тонкий эффект) ----- */
+@keyframes bcSparkle {
+  0%   { text-shadow: 0 0 0 rgba(0,212,255,0); }
+  50%  { text-shadow: 0 0 10px rgba(0,212,255,.45); }
+  100% { text-shadow: 0 0 0 rgba(0,212,255,0); }
+}
+.navbar .nav-link.active {
+  animation: bcSparkle 1.8s ease-in-out 1;
+}
+
+/* ----- Служебные правки Bootstrap ----- */
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .show > .nav-link {
+  color: var(--bc-text) !important;
+}
+
+/* ----- Мобильные правки ----- */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    padding: .6rem 0;
+    background: linear-gradient(135deg, var(--bc-bg), transparent);
+    border-top: 1px solid var(--bc-border);
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+  }
+  .navbar .nav-link::after { left: 10px; right: 10px; bottom: 4px; }
+  .navbar-text { margin: .5rem 0 !important; width: 100%; text-align: center; }
+  .navbar .btn,
+  .navbar .nav-link.btn { width: 100%; text-align: center; }
+}
